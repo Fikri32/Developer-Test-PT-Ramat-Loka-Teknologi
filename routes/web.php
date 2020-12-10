@@ -55,7 +55,7 @@ Route::group(['prefix' => 'buku'],function(){
 
 Route::group(['prefix' => 'pinjam'],function(){
   Route::get('','PeminjamanController@index')->name('pinjam.index');
-  // Route::get('cari','PeminjamanController@cari')->name('pinjam.cari');
+  Route::get('cari','PeminjamanController@cari')->name('pinjam.cari');
   Route::match(['get','post'],'tambah','PeminjamanController@store')->name('pinjam.tambah');
   Route::match(['get','put'],'update/{id}','PeminjamanController@update')->name('pinjam.update');
   Route::get('delete/{id}','PeminjamanController@destroy')->name('pinjam.delete');

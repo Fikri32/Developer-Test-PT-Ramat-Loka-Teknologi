@@ -13,17 +13,15 @@
       </div>
       <div class="x_content">
         <br />
-        <form method="POST" enctype="multipart/form-data" action="{{route('peminjaman.update',$peminjaman->id)}}" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+        <form method="POST" enctype="multipart/form-data" action="{{route('pinjam.update',$pinjam->id)}}" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
           @csrf
           @method('PUT')
+
           <div class="form-group">
-
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Nama penerbit <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama Peminjam <span class="required">*</span>
             </label>
-
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" name="nama" id="nama" value="{{$penerbit->nama}}" value="" class="form-control col-md-7 col-xs-12">
-
+              <input type="text" name="nama" id="" value="{{$pinjam->nama}}" class="form-control col-md-7 col-xs-12">
               @if ($errors->has('nama'))
               <span class="text-danger">{{ $errors->first('nama') }}</span>
               @endif
@@ -31,29 +29,39 @@
           </div>
 
           <div class="form-group">
-
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Alamat <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Tanggal Mulai <span class="required">*</span>
             </label>
-
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" name="alamat" id="alamat" value="{{($penerbit->alamat)}}" value="" class="form-control col-md-7 col-xs-12">
-
-              @if ($errors->has('alamat'))
-              <span class="text-danger">{{ $errors->first('alamat') }}</span>
+              <input type="date" name="pinjam" id="" value="{{$pinjam->tgl_pinjam}}" class="form-control col-md-7 col-xs-12">
+              @if ($errors->has('pinjam'))
+              <span class="text-danger">{{ $errors->first('pinjam') }}</span>
               @endif
             </div>
           </div>
 
           <div class="form-group">
-
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">No Handphone <span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Tanggal Kembali <span class="required">*</span>
             </label>
-
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" name="no_hp" id="" value="{{($penerbit->no_hp)}}"class="form-control col-md-7 col-xs-12">
+              <input type="date" name="kembali" id="" value="{{$pinjam->tgl_kembali}}" class="form-control col-md-7 col-xs-12">
+              @if ($errors->has('kembali'))
+              <span class="text-danger">{{ $errors->first('kembali') }}</span>
+              @endif
+            </div>
+          </div>
 
-              @if ($errors->has('no_hp'))
-              <span class="text-danger">{{ $errors->first('no_hp') }}</span>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Buku <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <select  class="form-control col-md-7 col-xs-12" name="buku" id="">
+                  <option value="">==Default== {{$pinjam->buku->judul}}</option>
+                  @foreach ($buku as $d)
+                  <option value="{{$d->id}}">{{$d->judul}}</option>
+                  @endforeach
+              </select>
+              @if ($errors->has('kategori'))
+              <span class="text-danger">{{ $errors->first('kategori') }}</span>
               @endif
             </div>
           </div>

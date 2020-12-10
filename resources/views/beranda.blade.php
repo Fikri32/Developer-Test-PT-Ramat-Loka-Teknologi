@@ -1,11 +1,19 @@
 @extends('layouts/master')
 
 @section('content')
-<div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
+<div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
   <div class="tile-stats">
-    <div class="icon"><i class="fa fa-dropbox"></i></div>
-    <div class="count"></div>
-    <h3></h3>
+    <div class="icon"><i class="fa fa-tasks"></i></div>
+    <div class="count">{{$transaksi}}</div>
+    <h3>Jumlah Transaksi</h3>
+    {{-- <p>Lorem ipsum psdea itgum rixt.</p> --}}
+  </div>
+</div>
+<div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+  <div class="tile-stats">
+    <div class="icon"><i class="fa fa-book"></i></div>
+    <div class="count">{{$buku}}</div>
+    <h3>Jumlah Buku</h3>
     {{-- <p>Lorem ipsum psdea itgum rixt.</p> --}}
   </div>
 </div>

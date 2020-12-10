@@ -65,7 +65,7 @@
 
             <div class="col-md-6 col-sm-6 col-xs-12">
               <select  class="form-control col-md-7 col-xs-12" name="kategori" id="">
-                <option value="">== Default {{$buku->kategori->nama}} ==</option>
+                <option value="">==Default== {{$buku->kategori->nama}} </option>
                @foreach ($kategori as $d)
                 <option value="{{$d->id}}">{{$d->nama}}</option>
                @endforeach
@@ -81,7 +81,7 @@
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <select  class="form-control col-md-7 col-xs-12" name="penulis" id="">
-                <option value="">== Default {{$buku->penulis->nama}} == </option>
+                <option value="">==Default== {{$buku->penulis->nama}}  </option>
                @foreach ($penulis as $p)
                 <option value="{{$p->id}}">{{$p->nama}}</option>
                @endforeach
@@ -97,7 +97,7 @@
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <select  class="form-control col-md-7 col-xs-12" name="penerbit" id="">
-                <option value="">== Default {{$buku->penerbit->nama}} ==</option>
+                <option value="">==Default== {{$buku->penerbit->nama}}</option>
                @foreach ($penerbit as $b)
                 <option value="{{$b->id}}">{{$b->nama}}</option>
                @endforeach

@@ -24,7 +24,7 @@
           </form>
         </div>
         <div class="col-md-3 col-sm-5 col-xs-12 form-group pull-right top_search">
-          <form action="" method="GET">
+          <form action="{{route('pinjam.cari')}}" method="GET">
             <div class="input-group">
               <input type="text" class="form-control" name="cari" placeholder="Cari Transaksi">
               <span class="input-group-btn">
@@ -42,6 +42,7 @@
               <th class="text-center">Tanggal Pinjam</th>
               <th class="text-center">Tanggal Jatuh Tempo</th>
               <th class="text-center">Lama Pinjam</th>
+              <th class="text-center">Sisa Waktu Pinjam</th>
               <th class="text-center">Action</th>
             </tr>
           </thead>
@@ -50,15 +51,32 @@
 						<tr class="text-center">
               <td>{{$index + 1}}</td>
 							<td>{{ $d->nama }}</td>
-							<td>{{$d->buku->judul}}</td>
-              <td>{{Carbon\Carbon::parse($d->tgl_pinjam)->translatedFormat('d F Y')}}</td>
-              <td>{{Carbon\Carbon::parse($d->tgl_kembali)->translatedFormat('d F Y')}}</td>
-              <td> 
-                 {{Carbon\Carbon::parse($d->tgl_pinjam)->diffInDays(Carbon\Carbon::parse($d->tgl_kembali))}} Hari
+              <td>{{$d->buku->judul}}</td>
+              
+              <td><span class="label label-success">{{Carbon\Carbon::parse($d->tgl_pinjam)->translatedFormat('d F Y')}}</span>
+              </td>
+
+              <td><span class="label label-danger">{{Carbon\Carbon::parse($d->tgl_kembali)->translatedFormat('d F Y')}}</span>
+              </td>
+              <td>
+                {{Carbon\Carbon::parse($d->tgl_pinjam)->diffInDays(Carbon\Carbon::parse($d->tgl_kembali))}} Hari
+              </td>
+              <td>
+                @if (Carbon\Carbon::parse($now)->diffInDays(Carbon\Carbon::parse($d->tgl_kembali)) == 0)
+                <span class="label label-danger">Buku Harus Di Kembalikan Hari Ini</span>
+
+                @elseif(Carbon\Carbon::parse($now) > (Carbon\Carbon::parse($d->tgl_kembali)) )
+                <span class="label label-success">Buku Sudah DiKembalikan</span>
+
+                @elseif(Carbon\Carbon::parse($now) < (Carbon\Carbon::parse($d->tgl_kembali)))
+                <span class="label label-success">{{Carbon\Carbon::parse($now)->diffInDays(Carbon\Carbon::parse($d->tgl_kembali))}} Hari Lagi</span>
+               
+                @endif 
+                  
               </td>
               <td> 
-                <a class="btn btn-success" href="{{route('penerbit.update',$d->id)}}">Edit</a>
-                <a class="btn btn-danger" href="{{route('penerbit.delete',$d->id)}}">Delete</a>
+                <a class="btn btn-success" href="{{ url('pinjam/update/'.$d->id) }}">Edit</a>
+                <a class="btn btn-danger" href="{{ url('pinjam/update/'.$d->id) }}">Delete</a>
               </td>
 						</tr>
 						@endforeach
