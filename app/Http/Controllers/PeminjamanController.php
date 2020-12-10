@@ -14,7 +14,8 @@ class PeminjamanController extends Controller
   {
     $tempo = $request->get('tempo');
     $pinjam = Pinjam::all();
-    $now = Carbon::now()->toDateString();
+    $now = Carbon::today()->toDateString();
+  
    
     // CARI BERDASARKAN TANGGAL
     if($tempo)
