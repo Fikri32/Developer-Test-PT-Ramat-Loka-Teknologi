@@ -26,8 +26,8 @@
 							<td>{{$index + 1}}</td>
 							<td>{{ $d->nama }}</td>
               <td> 
-                <a class="btn btn-success" href="{{route('penulis.update',$d->id)}}">Edit</a>
-                <a class="btn btn-danger" href="{{route('penulis.delete',$d->id)}}">Delete</a>
+                <a class="btn btn-success" href="{{route('kategori.update',$d->id)}}">Edit</a>
+                <a class="btn btn-danger" href="{{route('kategori.delete',$d->id)}}">Delete</a>
               </td>
 						</tr>
 						@endforeach

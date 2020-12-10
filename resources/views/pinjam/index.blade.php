@@ -76,7 +76,7 @@
               </td>
               <td> 
                 <a class="btn btn-success" href="{{ url('pinjam/update/'.$d->id) }}">Edit</a>
-                <a class="btn btn-danger" href="{{ url('pinjam/update/'.$d->id) }}">Delete</a>
+                <a class="btn btn-danger" href="{{ url('pinjam/delete/'.$d->id) }}">Delete</a>
               </td>
 						</tr>
 						@endforeach
